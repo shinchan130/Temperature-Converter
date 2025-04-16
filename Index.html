@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      body {
+        padding: 50px 100px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #contenar {
+        background-color: #f5ebe8;
+        padding: 100px;
+        text-align: center;
+        
+      }
+      .input-div {
+        display: inline-block;
+      }
+      .inp {
+        border: 1px solid #dadce0;
+        border-radius: 2px 2px 0 0;
+        border-radius: 2px 2px 0 0;
+        color: #000;
+        font-size: 180%;
+        height: 40px;
+        padding: 1px 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+        text-align: center;
+        width: 220px;
+        outline: none;
+      }
+      .inp2 {
+        width: 220px;
+        margin-top: -1px;
+        border: 1px solid #dadce0;
+        height: 20px;
+        padding: 1px 6px;
+        color: #1f1f1f;
+        background-color: #f8f9fa;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Temperature Converter</h1>
+    <div id="contenar">
+      <div class="input-div">
+        <input type="number" value="0" id="cel" class="inp" /><br />
+        <input type="text" value="Celsius" class="inp2" readonly />
+        <!-- readonly no change -->
+      </div>
+      <div class="input-div">
+        <input type="number" value="32" id="fah" class="inp" /><br />
+        <input type="text" value="Fahrenheit" class="inp2" readonly />
+        <!-- readonly no change -->
+      </div>
+    </div>
+    <script>
+      let cel = document.getElementById("cel");
+      let fah = document.getElementById("fah");
+      cel.addEventListener("input", function () {
+        let c = this.value;
+        let f = (c * 9) / 5 + 32;
+        if (!Number.isInteger(f)) {
+          f = f.toFixed(4);
+        }
+        fah.value = f;
+      });
+      fah.addEventListener("input", function () {
+        let f = this.value;
+        let c = ((f - 32) * 5) / 9;
+        if (!Number.isInteger(c)) {
+          c = c.toFixed(4);
+        }
+        cel.value = c;
+      });
+    </script>
+  </body>
+</html>
